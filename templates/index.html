@@ -1,0 +1,489 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+    <script src="https://kit.fontawesome.com/792e97f3cc.js" crossorigin="anonymous"></script>
+
+    <title>daily asmr</title>
+
+    <!-- Bulma CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+    <!-- Font Awesome CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            font-family: 'Gowun Dodum', sans-serif;
+        }
+
+        .mytitle {
+            width: 100%;
+            height: 250px;
+        }
+
+        .mytitle > button {
+            width: 200px;
+            height: 50px;
+
+            background-color: transparent;
+            color: white;
+
+            border-radius: 50px;
+            border: 1px solid white;
+
+            margin-top: 10px;
+        }
+
+        .categorie {
+
+            margin-top: 10px;
+
+        }
+
+
+        .categorie > button {
+
+            width: 200px;
+            height: 50px;
+
+            background-color: transparent;
+            color: white;
+
+            border-radius: 50px;
+            border: 1px solid white;
+
+
+        }
+
+        .mytitle > button:hover {
+            border: 2px solid white;
+        }
+
+
+        .mycomment {
+            color: gray;
+        }
+
+        .wrap {
+
+        }
+
+        .button-holder {
+
+            position: fixed;
+            bottom: 50px;
+            right: 50px;
+
+        }
+
+        .button-holder > button {
+
+            font-size: 20px;
+            background-color: white;
+            border-radius: 10px;
+            border: 1px solid #f38c8c;
+            text-decoration: none;
+            color: #f38c8c;
+
+        }
+
+        .mycards {
+            margin: 20px auto 0px auto;
+            width: 95%;
+            max-width: 1200px;
+        }
+
+        .share {
+
+            width: 100%;
+
+            background-position: center;
+            background-size: cover;
+
+            color: white;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+        }
+
+        .share > button {
+
+            width: 200px;
+            height: 50px;
+
+            border-radius: 50px;
+            border: 1px solid white;
+            color: white;
+
+            background-color: mediumaquamarine;
+
+            margin-top: 10px;
+
+        }
+
+        .mypost {
+            width: 95%;
+            max-width: 500px;
+            margin: 20px auto 0px auto;
+            padding: 20px;
+            box-shadow: 0px 0px 3px 0px gray;
+
+            display: none;
+        }
+
+        .mybtns {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+
+            margin-top: 20px;
+        }
+
+        .mybtns > button {
+            margin-right: 10px;
+        }
+
+        .hero {
+
+            display: flex;
+            align-items: center; /* 수직 정렬 */
+            flex-direction: column; /* default: row */
+            justify-content: center; /* flex direction에 대해서 정렬방식 선택 */
+            padding: 80px;
+
+        }
+
+        .banner-img {
+
+            max-width: 300px;
+
+        }
+
+        .profile{
+
+
+            margin-right: 20px;
+
+        }
+
+
+
+
+        .myimg {
+            width: 100px;
+            height: 30px;
+            margin-left: 15px;
+        }
+    </style>
+    <script>
+
+        $(document).ready(function () {
+            listing();
+        });
+
+        function listing() {
+            $.ajax({
+                type: 'GET',
+                url: '/main/asmr',
+                data: {},
+                success: function (response) {
+
+                }
+            })
+        }
+
+        function listing_Calm() {
+            $('#cards-box').empty();
+
+            $.ajax({
+                type: 'GET',
+                url: '/main/asmr/calm',
+                data: {},
+                success: function (response) {
+                    let rows = response['ASMRs']
+                    for (let i = 0; i < rows.length; i++) {
+                        let comment = rows[i]['comment']
+                        let title = rows[i]['title']
+                        let content = rows[i]['content']
+                        let thumbnail = rows[i]['thumbnail']
+                        let url = rows[i]['url']
+
+
+                        let temp_html = `<div class="col">
+                                            <div class="card h-100">
+                                                <a href="${url}"><img src="${thumbnail}"
+                                                     class="card-img-top"><a>
+                                                <div class="card-body">
+                                                    <h5 class="card-title">${title}</h5>
+                                                    <p class="card-text">${content}</p>
+                                                    <p class="mycomment">${comment}</p>
+                                                </div>
+                                            </div>
+                                        </div>`
+
+                        $('#cards-box').append(temp_html)
+
+                    }
+
+                    console.log(response['ASMRs'])
+                }
+            })
+        }
+
+        function listing_Sleep() {
+            $('#cards-box').empty();
+
+            $.ajax({
+                type: 'GET',
+                url: '/main/asmr/sleep',
+                data: {},
+                success: function (response) {
+                    let rows = response['ASMRs']
+                    for (let i = 0; i < rows.length; i++) {
+                        let comment = rows[i]['comment']
+                        let title = rows[i]['title']
+                        let content = rows[i]['content']
+                        let thumbnail = rows[i]['thumbnail']
+                        let url = rows[i]['url']
+
+                        let temp_html = `<div class="col">
+                                            <div class="card h-100">
+                                                <a href="${url}"><img src="${thumbnail}"
+                                                     class="card-img-top"></a>
+                                                <div class="card-body">
+                                                    <h5 class="card-title">${title}</h5>
+                                                    <p class="card-text">${content}</p>
+                                                    <p class="mycomment">${comment}</p>
+                                                </div>
+                                            </div>
+                                        </div>`
+                        $('#cards-box').append(temp_html)
+
+                    }
+
+                    console.log(response['ASMRs'])
+                }
+            })
+        }
+
+        function listing_Concentration() {
+            $('#cards-box').empty();
+
+            $.ajax({
+                type: 'GET',
+                url: '/main/asmr/concentration',
+                data: {},
+                success: function (response) {
+                    let rows = response['ASMRs']
+                    for (let i = 0; i < rows.length; i++) {
+                        let comment = rows[i]['comment']
+                        let title = rows[i]['title']
+                        let content = rows[i]['content']
+                        let thumbnail = rows[i]['thumbnail']
+                        let url = rows[i]['url']
+
+                        let temp_html = `<div class="col">
+                                            <div class="card h-100">
+                                                <a href="${url}"><img src="${thumbnail}"
+                                                     class="card-img-top"></a>
+                                                <div class="card-body">
+                                                    <h5 class="card-title">${title}</h5>
+                                                    <p class="card-text">${content}</p>
+                                                    <p class="mycomment">${comment}</p>
+                                                </div>
+                                            </div>
+                                        </div>`
+
+                        $('#cards-box').append(temp_html)
+
+                    }
+
+                    console.log(response['ASMRs'])
+                }
+            })
+        }
+
+        function posting() {
+            let url = $('#url').val()
+            let category = $('#category').val()
+            let comment = $('#comment').val()
+
+            $.ajax({
+                type: 'POST',
+                url: '/main/asmr',
+                data: {url_give: url, category_give: category, comment_give: comment},
+                success: function (response) {
+                    alert(response['msg'])
+                    window.location.reload()
+                }
+            });
+        }
+
+
+
+        function open_box() {
+            $('#post-box').show()
+        }
+
+        function close_box() {
+            $('#post-box').hide()
+        }
+
+        function sign_out() {
+            $.removeCookie('mytoken', {path: '/'});
+            alert('로그아웃!')
+            window.location.href = "/login"
+        }
+    </script>
+</head>
+
+<body>
+<!-- 상단 네이게이션 -->
+<nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+        <!-- 원래 있던 코드들 -->
+        <!--    <a class="navbar-item" href="https://hanghae99.spartacodingclub.kr/?utm_source=google_sa&utm_medium=paid&utm_campaign=15140556153&utm_content=129341608796&utm_term=%ED%95%AD%ED%95%B499_558314615957&gclid=Cj0KCQiAmpyRBhC-ARIsABs2EArVF6Ree0Z3qIrXLE3jeEaeuP4Dq5U-joTn14vqtoSuuI_hKMO_CowaAjZ8EALw_wcB">-->
+        <!--      <img src="https://hanghae99.spartacodingclub.kr/static/images/logo.svg" width="95" height="28">-->
+        <!--    </a>-->
+        <div class="myimg">
+            <img src="{{ url_for('static', filename='img/banner2.png') }}">
+        </div>
+
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample"
+           onclick="buggerMenuClick()">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+    </div>
+
+    <div class="navbar-menu">
+        <div class="navbar-start">
+            <a class="navbar-item" href="/">
+                홈
+            </a>
+            <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-link" onclick="mobileDropDownClick()">
+                    더보기
+                </a>
+                <div class="navbar-dropdown">
+                    <a class="navbar-item" href="https://github.com/whtnqls124578">
+                        GitHub - 조수빈
+                    </a>
+                    <a class="navbar-item" href="https://github.com/voyager16">
+                        GitHub - 윤혜림
+                    </a>
+                    <a class="navbar-item" href="https://github.com/smhong">
+                        GitHub - 백지영
+                    </a>
+                    <a class="navbar-item" href="https://github.com/HunDeveloper16">
+                        GitHub - 이성훈
+                    </a>
+                    <hr class="navbar-divider">
+                    <a class="navbar-item" href="https://github.com/fomula91/HelloWord">
+                        GitHub Repository
+                    </a>
+                    <a class="navbar-item" href="https://subincoding.tistory.com/3">
+                        S.A(Start Assignment)
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="navbar-end">
+
+            <div class="navbar-item">
+                <div class="profile">
+                    <a class="image" href="/user/{{ user_info.username }}">
+                        <img class="is-rounded" src="{{ url_for('static', filename=user_info.profile_pic_real) }}">
+                    </a>
+                </div>
+                <div class="buttons">
+                    <a class="button is-primary" onclick="sign_out()">
+                        <strong>로그아웃</strong>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<section class="hero is-primary is-bold is-medium">
+    <div class="banner-img">
+
+        <img src="{{ url_for('static', filename='img/banner1.png') }}">
+
+    </div>
+
+</section>
+
+<div class="share">
+    <button onclick="open_box()">Asmr 공유하기</button>
+</div>
+<div class="mypost" id="post-box">
+    <div class="form-floating mb-3">
+        <input id="url" type="email" class="form-control" placeholder="name@example.com">
+        <label>ASMR_URL</label>
+    </div>
+    <div class="input-group mb-3">
+        <label class="input-group-text" for="inputGroupSelect01">기분</label>
+        <select class="form-select" id="category">
+            <option selected>-- 선택하기 --</option>
+            <option value="1">Calm</option>
+            <option value="2">Sleep</option>
+            <option value="3">Concentration</option>
+        </select>
+    </div>
+    <div class="form-floating">
+        <textarea id="comment" class="form-control" placeholder="Leave a comment here"></textarea>
+        <label for="floatingTextarea2">코멘트</label>
+    </div>
+    <div class="mybtns">
+        <button onclick="posting()" type="button" class="btn btn-dark">기록하기</button>
+        <button onclick="close_box()" type="button" class="btn btn-outline-dark">닫기</button>
+    </div>
+</div>
+<div class="wrap">
+    <div class="mycards">
+        <div class="row row-cols-1 row-cols-md-4 g-4" id="cards-box">
+            {% for asmr in cards %}
+            <div class="col">
+                <div class="card h-100">
+                    <a href="{{ asmr.url }}"><img src="{{ asmr.thumbnail }}"
+                                                  class="card-img-top"></a>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ asmr.title }}</h5>
+                        <p class="card-text">{{ asmr.content }}</p>
+                        <p class="mycomment">{{ asmr.comment }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="button-holder">
+
+        <button onclick="listing_Calm()">Calm</button>
+        <button onclick="listing_Sleep()">Sleep</button>
+        <button onclick="listing_Concentration()">Concentration</button>
+
+    </div>
+</div>
+</body>
+
+</html>
