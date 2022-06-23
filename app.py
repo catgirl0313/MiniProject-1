@@ -89,7 +89,7 @@ def sign_in():
          'exp': datetime.utcnow() + timedelta(seconds=60 * 60 * 24)  # 로그인 24시간 유지
         }
         # payload로 jwt토큰을 만들어서 SECRET_KEY로 암호화를 만들어주고
-        token = jwt.encode(payload, SECRET_KEY, algorithm='HS256') #.decode('utf-8') 왜 이걸 뒤에 붙이면 오류가 나지...?? 저거 없애니까 로그인 성공함..(코드스니펫 코드임)
+        token = jwt.encode(payload, SECRET_KEY, algorithm='HS256').decode('utf-8') # decode('utf-8') 제외하면 ubuntu에서 작동이 안됨
         # 클라이언트에게('token': token) 넘겨주면 끝!
         return jsonify({'result': 'success', 'token': token})
     # 로그인 실패한 경우
@@ -208,11 +208,6 @@ def update_like():
         return redirect(url_for("home"))
 
 
-@app.route('/main')
-def main():
-    cards = list(db.ASMR.find({}, {"_id": False}))
-    print(cards)
-    return render_template('index.html', cards=cards)
 
 @app.route("/main/asmr", methods=["POST"])
 def asmr_post():

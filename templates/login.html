@@ -3,11 +3,17 @@
     <head>
 
         <!-- Webpage Title -->
-        <title>Log In | SWEETER</title>
+        <title>Log In | Daily ASMR</title>
 
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.png') }}" type="image/x-icon">
+        <link rel="icon" href="{{ url_for('static', filename='favicon.png') }}" type="image/x-icon">
+        <meta property="og:title" content="DAILY ASMR - 매일매일 듣는 본격 취향저격 ASMR!"/>
+        <meta property="og:description" content="mini project for Web Plus"/>
+        <meta property="og:image" content="{{ url_for('static', filename='ogimg.png') }}"/>
 
         <!-- Bulma CSS -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
@@ -26,7 +32,7 @@
 
         <style>
             body {
-                background-color: RGBA(232, 52, 78, 0.2);
+                background-color: #bde8d4;
                 min-height: 100vh;
             }
 
@@ -49,24 +55,40 @@
             }
 
             .is-sparta {
-                color: #e8344e !important;
+                color: #19deb9 !important;
             }
 
             .button.is-sparta {
-                background-color: #e8344e;
+                background-color: #19deb9;
                 border-color: transparent;
                 color: #fff !important;
             }
 
             .button.is-sparta.is-outlined {
                 background-color: transparent;
-                border-color: #e8344e;
-                color: #e8344e !important;
+                border-color: #19deb9;
+                color: #15ad92 !important;
             }
 
             .help {
                 color: gray;
             }
+
+            .myimg{
+                max-width: 250px;
+                min-width: 100px;
+                padding-top: -20px;
+                box-sizing: border-box;
+                position: relative;
+                margin-top: -10px;
+                margin-right: 30px;
+
+            }
+
+            .hero is-white{
+                position: absolute;
+            }
+
         </style>
 
         <script>
@@ -257,8 +279,9 @@
     <body>
         <section class="hero is-white">
             <div class="hero-body has-text-centered" style="padding-bottom:1rem;margin:auto;">
-                <h1 class="title is-sparta">DAILY ASMR</h1>
-                <h3 class="subtitle is-sparta">매일매일 분위기에 맞춰 듣는 취향저격 asmr</h3>
+                <div class="myimg">
+                    <img src="{{ url_for('static', filename='img/banner2.png') }}">
+                </div>
             </div>
         </section>
         <section class="section">
