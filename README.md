@@ -1,36 +1,38 @@
 # # Daily ASMR
 요즘 피곤하거나 쉬고싶을때 또는 집중하고 싶을때 asmr을 자주 듣지는 않으신가요?
-카테고리별로 추천영상을 즐겨보세요!
-
+<br>카테고리별로 추천영상을 즐겨보세요!
+<br>
+<br>
 <h2>제작 기간/팀원 소개</h2>
-<ul>
+<ul style="list-style: none;">
   <li>2022년 6월 20일 ~ 2022년 6월 23일</li>
-  <li>4인 1조 팀 프로젝트<li>
-    <ul>
-      <li>이성훈 : </li>
-      <li>조수빈 : </li>
-      <li>윤혜림 :</li>
-      <li>백지영 : </li>
-  </ul>
+  <br>
+  <li>4인 1조 팀 프로젝트</li>
+     👉 이성훈 : 크롤링,카테고리 분류
+    <br>👉 조수빈 : 전체 페이지css
+    <br>👉 윤혜림 : 로그인,회원가입
+    <br>👉 백지영 : 프로필,방명록
+ 
 </ul>
-
+<br>
+<br>
 <h2>사용 기술</h2>
 
 <p>
   <code>Backend</code>
 </p>
 <ul>
-  <li>flask</li>
-  <li>Python3</li>
-  <li>MongoDB</li>
+  <li>flask 2.1.2</li>
+  <li>Python 3.8</li>
+  <li>MongoDB 4.1.1</li>
 </ul>
 
 <p>
 <code>Front-end</code>
 </p>
 <ul>
-  <li>JQuery</li>
-  <li>Bulma</li>
+  <li>JQuery 3.5.1</li>
+  <li>Bulma 0.9.1</li>
 </ul>
 
 <p>
@@ -40,10 +42,14 @@
   <li>AWS EC2(Ubuntu 20.04 LTS)</li>
 </ul>
   
-
+<br>
+<br>
 <h2>실행 화면</h2>
+
 https://youtu.be/K_vKKiMt6-k
 
+<br>
+<br>
 <h2>핵심기능</h2>
 <ul>
   <li>
@@ -71,6 +77,8 @@ https://youtu.be/K_vKKiMt6-k
   </li>
 </ul>
 
+<br>
+<br>
 <h2>개인 회고</h2>
 <p>
   이성훈 : <a href="https://lsh2016.tistory.com/123">https://lsh2016.tistory.com/123
