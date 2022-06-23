@@ -188,7 +188,7 @@
 
 </head>
 
-<!--내비게이션 바-->
+<!-- 상단 네이게이션 -->
 <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
         <!-- 원래 있던 코드들 -->
@@ -217,30 +217,36 @@
                     더보기
                 </a>
                 <div class="navbar-dropdown">
-                    <a class="navbar-item" href="https://github.com/choewy">
-                        GitHub - 최원영
+                    <a class="navbar-item" href="https://github.com/whtnqls124578">
+                        GitHub - 조수빈
                     </a>
-                    <a class="navbar-item" href="https://github.com/voyager16">
-                        GitHub - 하상우
+                    <a class="navbar-item" href="https://github.com/hryun11">
+                        GitHub - 윤혜림
                     </a>
-                    <a class="navbar-item" href="https://github.com/smhong">
-                        GitHub - 홍승민
+                    <a class="navbar-item" href="https://github.com/catgirl0313">
+                        GitHub - 백지영
                     </a>
-                    <a class="navbar-item" href="https://github.com/fomula91">
-                        GitHub - 김형중
+                    <a class="navbar-item" href="https://github.com/HunDeveloper16">
+                        GitHub - 이성훈
                     </a>
                     <hr class="navbar-divider">
-                    <a class="navbar-item" href="https://github.com/fomula91/HelloWord">
+                    <a class="navbar-item" href="https://github.com/HunDeveloper16/MiniProject">
                         GitHub Repository
                     </a>
-                    <a class="navbar-item" href="https://choewy.tistory.com/125">
+                    <a class="navbar-item" href="https://subincoding.tistory.com/3">
                         S.A(Start Assignment)
                     </a>
                 </div>
             </div>
         </div>
         <div class="navbar-end">
+
             <div class="navbar-item">
+                <div class="profile">
+                    <a class="image" href="/user/{{ user_info.username }}">
+                        <img class="is-rounded" src="{{ url_for('static', filename=user_info.profile_pic_real) }}">
+                    </a>
+                </div>
                 <div class="buttons">
                     <a class="button is-primary" onclick="sign_out()">
                         <strong>로그아웃</strong>
@@ -250,6 +256,7 @@
         </div>
     </div>
 </nav>
+
 
 <!--hero 내부에 전체적인 프로필-->
 <section class="hero is-primary is-bold is-medium">
