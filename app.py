@@ -96,6 +96,7 @@ def sign_in():
     else:
         return jsonify({'result': 'fail', 'msg': '아이디/비밀번호가 일치하지 않습니다.'})
 
+
 # 아이디는 그대로 저장하고 패스워드는 sha256이라는 해시함수를 써서 암호화해서 저장
 @app.route('/sign_up/save', methods=['POST'])
 def sign_up():
