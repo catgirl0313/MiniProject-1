@@ -84,11 +84,12 @@ https://youtu.be/K_vKKiMt6-k
 <br>
 <br>
 
-
+<!--
 <h2>개인 회고</h2>
 <p>
   이성훈 : <a href="https://lsh2016.tistory.com/123">https://lsh2016.tistory.com/123
 </p>
+-->
 
 
   
